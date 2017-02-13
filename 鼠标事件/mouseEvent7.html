@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件冒泡练习</title>
+    <style media="screen">
+        #wrap{
+            width: 200px;
+            height: 200px;
+            background: green;
+        }
+        .first{
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+
+    </div>
+</body>
+<script type="text/javascript">
+    var wrap = document.querySelector("#wrap");
+    // wrap.onmouover
+    wrap.addEventListener("mouseover",function (e) {
+        var ev = e || window.event;
+        console.log(ev.target);
+        console.log("进入");
+        var div = document.createElement("div");
+        div.className = "first";
+        div.addEventListener("mouseover", function (e) {
+            var ev = e || window.event;
+            if(ev.stopPropagation) {
+                ev.stopPropagation();
+            } else {
+                ev.cancelBubble = true;
+            }
+        })
+        div.addEventListener("mouseout", function () {
+            // console.log("移出");
+            wrap.removeChild(this);
+        }, false);
+        this.appendChild(div);
+    }, false);
+
+</script>
+</html>

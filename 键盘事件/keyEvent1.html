@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>键盘事件</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+    // 键盘类事件都是添加到window上面的
+    console.log(window);
+    // onkeydown,onkeyup,onkeypress
+    window.onkeydown = function (e) {
+        var ev = e || window.event;
+        if(ev.keyCode == 65) {
+            console.log("点击的是a");
+        }
+        // console.log(ev);
+        // console.log("键盘按下");
+    }
+</script>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件冒泡</title>
+    <style media="screen">
+        #wrap{
+            width: 300px;
+            height: 300px;
+            background: green;
+            position: relative;
+        }
+        #first{
+            width: 200px;
+            height: 200px;
+            background: red;
+            position: absolute;
+            left: 50px;
+            top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <!--
+    如果两个或者多个标签叠在一起，一旦这几个标签都有事件触发，
+        那么在点击的时候会同时触发这些事件，称之为事件冒泡
+     -->
+     <div id="wrap">
+        <div id="first"></div>
+     </div>
+
+</body>
+<script type="text/javascript">
+    // 事件通过层级关系进行传递的过程就叫事件冒泡
+    // 阻止事件冒泡的方式
+    // IE：cancelBubble
+    // 现代浏览器：stopPropagation，google、火狐
+    var wrap = document.querySelector("#wrap");
+    var first = document.querySelector("#first");
+    var body = document.querySelectorAll("body")[0];
+
+    wrap.onclick = function (e) {
+        alert("点击Wrap");
+        var ev = e || window.event;
+        ev.stopPropagation();
+    }
+    first.onclick = function (e) {
+        var ev = e || window.event;
+        // ie:cancelBubble
+        // ev.cancelBubble = true;
+        // 现代浏览器
+        // ev.stopPropagation();
+        // 兼容写法
+        // 如果这个函数存在
+        if(ev.stopPropagation) {
+            ev.stopPropagation();
+        } else {
+            ev.cancelBubble = true;
+        }
+        // 错误的写法
+        // 1.现代浏览器虽然开始兼容ie写法，
+        // 但是有一部分老的浏览器中没有cancelBubble这个属性
+        // 事件对象中不存在这个属性，那么转换为bool的话就是false
+        // if(ev.cancelBubble == false) {
+        //     ev.cancelBubble = true;
+        // } else {
+        //     ev.stopPropagation();
+        // }
+
+
+        alert("点击First");
+    }
+    body.onclick = function () {
+        alert("点击body");
+    }
+</script>
+</html>

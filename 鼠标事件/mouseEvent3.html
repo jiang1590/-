@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>鼠标事件练习</title>
+    <style media="screen">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #wrap{
+            width: 100px;
+            height: 100px;
+            background: green;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap"></div>
+</body>
+<script type="text/javascript">
+    var div = document.querySelector("#wrap");
+    // 1.按住
+    // 2.移动
+    // 事件响应必须在标签的范围内才能响应
+    div.onmousedown = function (e) {
+        var myEv = e || window.event;
+        var currentX = myEv.offsetX;
+        var currentY = myEv.offsetY;
+        // 谁调用这个函数，this就是谁
+        window.onmousemove = function (e) {
+            // 需要获得鼠标移动的位置
+            var ev = e || window.event;
+            var x = ev.clientX;
+            var y = ev.clientY;
+            // console.log("x:" + x + " y:" + y);
+            div.style.left = x - currentX + "px";
+            div.style.top = y - currentY + "px";
+        }
+        window.onmouseup = function () {
+            // 将移动事件取消
+            window.onmousemove = null;
+        }
+    }
+
+</script>
+</html>

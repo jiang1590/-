@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件对象练习</title>
+    <style media="screen">
+        #wrap{
+            width: 100px;
+            height: 100px;
+            background: green;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap"></div>
+</body>
+<script type="text/javascript">
+    var wrap = document.querySelector("#wrap");
+    window.onclick = function (e) {
+        var ev = e || window.event;
+        var x = ev.offsetX;
+        var y = ev.offsetY;
+        console.log(wrap.offsetWidth);
+        // 将x和y赋值给left和top
+        wrap.style.left = x - (wrap.offsetWidth / 2) + "px";
+        wrap.style.top = y - (wrap.offsetHeight / 2) + "px";
+        // 回顾：offsetWidth和offsetHeight分别是获得标签本身的宽和高
+        // 得到的结果是数字，用标签去调用
+        
+    }
+</script>
+</html>

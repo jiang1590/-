@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>键盘练习</title>
+    <style media="screen">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #wrap{
+            width: 100px;
+            height: 100px;
+            background: green;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap"></div>
+</body>
+<script type="text/javascript">
+    var wrap = document.querySelector("#wrap");
+
+    window.onkeydown = function (e) {
+        var ev = e || window.event;
+        console.log(ev.keyCode);
+        var currentLeft = wrap.offsetLeft;
+        var currentTop = wrap.offsetTop;
+        switch (ev.keyCode) {
+            case 37: // 左
+                currentLeft -= 100;
+                wrap.style.left = currentLeft + "px";
+                break;
+            case 38: // 上
+                currentTop -= 100;
+                wrap.style.top = currentTop + 'px';
+                break;
+            case 39: // 右
+                currentLeft += 100;
+                wrap.style.left = currentLeft + "px";
+                break;
+            case 40: // 下
+                currentTop += 100;
+                wrap.style.top = currentTop + 'px';
+                break;
+            default:
+                break;
+        }
+    }
+</script>
+</html>

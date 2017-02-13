@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>鼠标事件2</title>
+    <style media="screen">
+        #wrap{
+            width: 100px;
+            height: 100px;
+            background: green;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+
+    </div>
+</body>
+<script type="text/javascript">
+    // 鼠标事件
+    // 1.onmouseover
+    // 2.onmouseout
+    // 3.onmouseenter
+    // 4.onmouseleave
+    var wrap = document.querySelector("#wrap");
+    // wrap.onmouseover = function () {
+    //     console.log("进入");
+    // }
+    // wrap.onmouseout = function () {
+    //     console.log("出来");
+    // }
+
+    wrap.onmouseenter = function () {
+        console.log("进入");
+    }
+    wrap.onmouseleave = function () {
+        console.log("出来");
+    }
+
+</script>
+</html>

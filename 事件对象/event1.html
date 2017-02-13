@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件对象</title>
+    <style media="screen">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #first{
+            width: 200px;
+            height: 200px;
+            background: green;
+            margin: 100px;
+            position: relative;
+        }
+        #wrap{
+            width: 100px;
+            height: 100px;
+            background: red;
+            position: absolute;
+            left: 50px;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="first">
+        <div id="wrap"></div>
+    </div>
+
+</body>
+<script type="text/javascript">
+    // 事件对象作用：
+    // 1.可以获得和哪个按键结合
+    // 2.获得点击所在的位置
+    // 3.获得点击所对应的标签
+    var wrap = document.querySelector("#wrap");
+    wrap.onclick = function (e) {
+        // 1.浏览器兼容
+        // 形参对象是针对于现代浏览器
+        // IE不能通过形参来获得事件对象，window.event
+        // console.log(window.event);
+        // 或语法，返回为真的值
+        // var ev = e || window.event;
+        // 2.事件对象点击所在的位置
+        // clientX和clientY，针对于浏览器视窗而言
+        // console.log("clientX:" + ev.clientX + " clientY:" + ev.clientY);
+        // 3.offsetX和offsetY；相对于自身而言
+        // console.log("offsetX:" + ev.offsetX + " offsetY:" + ev.offsetY);
+        // 4.screenX和screenY;相对于显示屏
+        // console.log("screenX:" + ev.screenX + " screenY:" + ev.screenY);
+        // console.log(ev);
+        // 5.点击所对应的标签
+        // console.log(ev.target);
+    }
+</script>
+</html>

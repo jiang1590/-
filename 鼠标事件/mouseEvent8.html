@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>阻止默认事件</title>
+    <style media="screen">
+        #wrap{
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <a href="http://www.baidu.com">进入百度</a>
+    <div id="wrap"></div>
+</body>
+<script type="text/javascript">
+    // var a = document.querySelectorAll("a")[0];
+    // 阻止系统默认事件的两种方式
+    // 1.IE：return false
+    // 2.现代浏览器：事件对象.preventDefault();
+    // a.onclick = function (e) {
+    //     alert("点击");
+    //     // IE:ie8及以下，IE11及以上，W3C
+    //     // return false;
+    //     // 现代浏览器
+    //     var ev = e || window.event;
+    //     ev.preventDefault();
+    // }
+
+    var wrap = document.querySelector("#wrap");
+    wrap.oncontextmenu = function () {
+
+        // return false;
+    }
+
+</script>
+</html>
